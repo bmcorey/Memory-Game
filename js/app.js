@@ -98,7 +98,7 @@ function startGameBoard() {
 }
 
 
-
+//Flipping cards and adding moves to the counter
 function cardClickEvent(card){
 	if(!card.htmlElement.className.includes(cssClasses.show)){
 		moveCounter++;
@@ -114,6 +114,7 @@ function cardClickEvent(card){
 	}
 }
 
+//Mixing the icons in the cards
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
@@ -128,7 +129,7 @@ function shuffle(array) {
     return array;
 }
 
-
+//Giving the correct stars to the player
 function calcualteMoveScore() {
 	if(stars != null && stars.length === 3) {
 		if(moveCounter > (cards.length * 2)) {
@@ -139,7 +140,7 @@ function calcualteMoveScore() {
 	}
 }
 
-
+//One of the core function, this allow to incorporate or replace classes in the cards
 function updateElementClasses(element, className, add) {
 	if(add && !element.className.includes(className)) {
 		element.className = `${element.className} ${className}`;
@@ -149,8 +150,8 @@ function updateElementClasses(element, className, add) {
 	return element.className;
 }
 
+//Correct cards behaviour,
 function checkMatchingCards(card) {
-
 	if(lastFlippedCard != null && card.index != lastFlippedCard.index) {
 		if(lastFlippedCard.flipped && card.flipped && !lastFlippedCard.correct
 			 && (card.icon === lastFlippedCard.icon)) {
@@ -173,7 +174,7 @@ function checkMatchingCards(card) {
 	setTimeout(function() {card.clicked = false;}, 1000);
 }
 
-
+//Wrong cards behaviour
 function alertWrongCards(card, lastCard){
 
 	card.hideCard();
@@ -186,14 +187,13 @@ function alertWrongCards(card, lastCard){
 }
 
 
-
+//Detailing the modal and adding the template literals to the modal window.
 function checkGameCompletetion() {
 	for(let card of cards) {
 		if(!card.correct) {
 			return false;
 		}
 	}
-
 
 	clearInterval(timerID);
 
@@ -216,7 +216,7 @@ function checkGameCompletetion() {
 	return true;
 }
 
-
+//Getting the time to finish teh game
 function startTimer() {
 	finalTime = Math.round((new Date() - startDate)/1000);
 	document.getElementById('game-time').innerHTML =`${finalTime} seconds` ;
@@ -227,7 +227,6 @@ function startTimer() {
 
 
 // START THE GAME AND ENJOY :)
-
 document.addEventListener('DOMContentLoaded',function(){
 	startGameBoard();
 	timerID = setInterval(startTimer, 1000);
