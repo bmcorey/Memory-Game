@@ -3,9 +3,11 @@
 
 Hi, I've made this game for Udacity's Front end nano-degree.
 
-Play Here:
+## How to play
 
-https://bmcorey.github.io/Memory-Game/
+	- You can clone this repo
+	- Download the .ZIP file and run index.html in your browser
+	- Open this URL : https://bmcorey.github.io/Memory-Game/
 
 ## Instrucions
 
